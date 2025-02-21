@@ -25,8 +25,6 @@ jobs:
               uses: google-github-actions/auth@v1
               with:
                 credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-            
-            - name: Set up Google Cloud SDK
-              uses: google-github-actions/setup-gcloud@v1
-              with:
-                project_id: ardent-rush-451423-q2
+
+            - name: Build Docker image and push to GAR
+              run: gcloud builds submit --tag us-central1-docker.pkg.dev/ardent-rush-451423-q2/notely-ar-repo/notely:latest .
