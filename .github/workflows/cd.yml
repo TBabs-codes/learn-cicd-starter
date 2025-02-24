@@ -28,3 +28,6 @@ jobs:
 
             - name: Build Docker image and push to GAR
               run: gcloud builds submit --tag us-central1-docker.pkg.dev/ardent-rush-451423-q2/notely-ar-repo/notely:latest .
+
+            - name: Deploy to Cloud Run
+              run: gcloud run deploy notely --image us-central1-docker.pkg.dev/ardent-rush-451423-q2/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project ardent-rush-451423-q2 --max-instances=4
